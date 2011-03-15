@@ -1,0 +1,70 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="collective.z3cform.mapwidget">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <class class=".widget.MapWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.IMapWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.IMapWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="map_input.pt"
+    />
+
+  <z3c:widgetTemplate
+    mode="display"
+    widget=".widget.IMapWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="map_display.pt"
+    />
+
+  <adapter
+    for=".widget.IMapWidget
+         zope.interface.Interface
+         zope.interface.Interface"
+    factory=".maplayers.MapWidgets"
+    />
+
+  <adapter
+    for=".widget.IMapWidget
+         zope.interface.Interface
+         zope.interface.Interface"
+    factory=".maplayers.ShapeMapWidget"
+    name="geoshapemap" />
+
+  <adapter
+      for=".widget.IMapWidget
+           zope.interface.Interface
+           zope.interface.Interface
+           collective.geo.mapwidget.interfaces.IMapWidget"
+      factory=".maplayers.ShapeEditLayer"
+      name="shapeedit"
+      />
+
+  <!-- <adapter
+      for=".widget.IMapWidget
+           zope.interface.Interface
+           zope.interface.Interface
+           zope.interface.Interface"
+      factory=".maplayers.MapWidget"
+      name="z3cform-map-widget"
+  /> -->
+
+  <!-- <adapter
+    for=".widget.IMapWidget
+         zope.interface.Interface
+         zope.interface.Interface
+         zope.interface.Interface"
+    factory=".maplayers.ShapeMapWidget"
+    /> -->
+
+</configure>
