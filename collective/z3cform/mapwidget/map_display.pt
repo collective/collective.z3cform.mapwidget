@@ -13,6 +13,10 @@
                       onmouseout view/onmouseout;
                       onkeypress view/onkeypress;
                       onkeydown view/onkeydown;
-                      onkeyup view/onkeyup"><tal:block
-      condition="view/value" content="structure view/value"
-/></div>
+                      onkeyup view/onkeyup">
+       <div id="map" tal:define="cgmap view/mapwidgets"
+                     tal:attributes="id view/id;">
+           <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+           <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+       </div>
+</div>

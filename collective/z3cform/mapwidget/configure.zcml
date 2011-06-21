@@ -38,8 +38,24 @@
     for=".widget.IMapWidget
          zope.interface.Interface
          zope.interface.Interface"
+    factory=".maplayers.ShapeMapDisplayWidget"
+    name="geoshapedisplaymap" />
+
+  <adapter
+    for=".widget.IMapWidget
+         zope.interface.Interface
+         zope.interface.Interface"
     factory=".maplayers.ShapeMapWidget"
     name="geoshapemap" />
+
+  <adapter
+      for=".widget.IMapWidget
+           zope.interface.Interface
+           zope.interface.Interface
+           collective.geo.mapwidget.interfaces.IMapWidget"
+      factory=".maplayers.ShapeDisplayLayer"
+      name="shapedisplay"
+      />
 
   <adapter
       for=".widget.IMapWidget

@@ -8,6 +8,7 @@ from zope.component import getMultiAdapter
 import z3c.form.interfaces
 import z3c.form.browser.textarea
 import z3c.form.widget
+from z3c.form.interfaces import DISPLAY_MODE
 from collective.geo.mapwidget.interfaces import IMaps, IMapView
 
 class IMapWidget(z3c.form.interfaces.ITextAreaWidget, IMapView):
@@ -15,7 +16,7 @@ class IMapWidget(z3c.form.interfaces.ITextAreaWidget, IMapView):
 
 class MapWidget(z3c.form.browser.textarea.TextAreaWidget):
     zope.interface.implementsOnly(IMapWidget)
-    
+
     klass = u'map-widget'
     value = u''
     mapfields = ['geoshapemap']
@@ -33,6 +34,15 @@ class MapWidget(z3c.form.browser.textarea.TextAreaWidget):
         #         self.context, getSite())
 
     def mapwidgets(self):
+        """Return list of applicable map widgets from the 'mapfields' property.
+
+        By default, we utilise the editable map. However, if we are in display
+        mode, then we utilise a non-editable map to render our field's stored
+        value.
+        """
+        if self.mode == DISPLAY_MODE:
+            self.mapfields = ['geoshapedisplaymap']
+
         return getMultiAdapter((self, self.request,
                                     self.context), IMaps)[0]
 

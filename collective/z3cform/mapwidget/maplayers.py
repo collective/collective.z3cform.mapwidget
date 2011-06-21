@@ -8,6 +8,29 @@ class MapWidgets(BaseMapWidgets):
     mapid = 'default-cgmap'
     klass = 'widget-cgmap'
 
+class ShapeMapDisplayWidget(MapWidget):
+
+    klass = 'widget-cgmap'
+    mapid = 'geoshapedisplaymap'
+    _layers = ['shapedisplay']
+
+    @property
+    def js(self):
+        layer_name = '%s - %s' % (self.context.Title(),
+                                  self.view.label)
+        return """
+    (function($) {
+
+    $(function() {
+       var map = cgmap.config['%(mapid)s'].map;
+       var layers = map.getLayersByName("%(layer_name)s");
+       if (layers && layers[0].features) {
+           map.zoomToExtent(layers[0].getDataExtent());
+       }
+    });
+
+    })(jQuery);
+    """ % dict(mapid=self.mapid, layer_name=layer_name)
 
 class ShapeMapWidget(MapWidget):
 
@@ -26,6 +49,35 @@ class ShapeMapWidget(MapWidget):
     elctl.activate();
    });
         """ % self.view.id
+
+class ShapeDisplayLayer(MapLayer):
+
+    name = 'shapedisplay'
+
+    @property
+    def jsfactory(self):
+        layer_name = '%s - %s' % (self.context.Title(),
+                                  self.widget.view.label)
+        js = """
+    function() {
+        var wkt = new OpenLayers.Format.WKT({
+            'internalProjection': new OpenLayers.Projection('EPSG:900913'),
+            'externalProjection': new OpenLayers.Projection('EPSG:4326')
+        });
+
+        var features = wkt.read('%(coords)s') || [];
+        if(features.constructor != Array) {
+            features = [features];
+        }
+
+        var layer = new OpenLayers.Layer.Vector('%(layer_name)s');
+        layer.addFeatures(features);
+        return layer;
+    }
+             """ % dict(coords=self.widget.view.value,
+                        layer_name=layer_name
+                       )
+        return js
 
 
 class ShapeEditLayer(MapLayer):
