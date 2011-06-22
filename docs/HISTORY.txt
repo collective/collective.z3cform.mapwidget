@@ -4,6 +4,10 @@ Changelog
 0.1dev (unreleased)
 -------------------
 
+- Pass map id through to edit shape map JavaScript.
+  [davidjb]
+- Remove dependency on jq object for edit shape map.
+  [davidjb] 
 - Added ability to display a collective.geo map when outputting this widget
   in display mode.  Presents a layer with the field's value as its features. 
   [davidjb]

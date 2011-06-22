@@ -41,14 +41,18 @@ class ShapeMapWidget(MapWidget):
     @property
     def js(self):
         return """
-  jq(function(){
-    var map = cgmap.config['geoshapemap'].map;
-    var layer = map.getLayersByName('Edit')[0];
-    var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
-    map.addControl(elctl);
-    elctl.activate();
-   });
-        """ % self.view.id
+    (function($) {
+
+    $(function() {
+       var map = cgmap.config['%(mapid)s'].map;
+       var layer = map.getLayersByName('Edit')[0];
+       var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%(wktid)s'});
+       map.addControl(elctl);
+       elctl.activate();
+    });
+
+    })(jQuery);
+    """ % dict(mapid=self.mapid, wktid=self.view.id)
 
 class ShapeDisplayLayer(MapLayer):
 
