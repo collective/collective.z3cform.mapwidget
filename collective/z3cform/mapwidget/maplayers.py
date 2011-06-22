@@ -59,13 +59,15 @@ class ShapeDisplayLayer(MapLayer):
         layer_name = '%s - %s' % (self.context.Title(),
                                   self.widget.view.label)
         js = """
-    function() {
+    function() { return (function(cgmap) {
+        cg_default_options = cgmap.createDefaultOptions();
         var wkt = new OpenLayers.Format.WKT({
-            'internalProjection': new OpenLayers.Projection('EPSG:900913'),
-            'externalProjection': new OpenLayers.Projection('EPSG:4326')
+            internalProjection: cg_default_options.projection,
+            externalProjection: cg_default_options.displayProjection
         });
 
         var features = wkt.read('%(coords)s') || [];
+        wkt.destroy();
         if(features.constructor != Array) {
             features = [features];
         }
@@ -73,6 +75,7 @@ class ShapeDisplayLayer(MapLayer):
         var layer = new OpenLayers.Layer.Vector('%(layer_name)s');
         layer.addFeatures(features);
         return layer;
+    })(cgmap);
     }
              """ % dict(coords=self.widget.view.value,
                         layer_name=layer_name
