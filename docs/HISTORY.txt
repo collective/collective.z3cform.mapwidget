@@ -4,6 +4,9 @@ Changelog
 0.1dev (unreleased)
 -------------------
 
+- Execute map construction on window.load rather than when the JavaScript
+  gets loaded.
+  [davidjb]
 - Pass map id through to edit shape map JavaScript.
   [davidjb]
 - Remove dependency on jq object for edit shape map.

@@ -21,7 +21,7 @@ class ShapeMapDisplayWidget(MapWidget):
         return """
     (function($) {
 
-    $(function() {
+    $(window).bind("load", function() {
        var map = cgmap.config['%(mapid)s'].map;
        var layers = map.getLayersByName("%(layer_name)s");
        if (layers && layers[0].features) {
@@ -43,7 +43,7 @@ class ShapeMapWidget(MapWidget):
         return """
     (function($) {
 
-    $(function() {
+    $(window).bind("load", function() {
        var map = cgmap.config['%(mapid)s'].map;
        var layer = map.getLayersByName('Edit')[0];
        var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%(wktid)s'});
