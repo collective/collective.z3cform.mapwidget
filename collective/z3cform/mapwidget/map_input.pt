@@ -6,15 +6,25 @@
       tal:omit-tag="">
   <div id="map"
        tal:define="cgmap view/mapwidgets">
+         <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
          <script type="text/javascript">
-           $(document).ready( function() {
+         (function($) {
+           $(window).bind("load", function() {
                $('#cgeo-get-location').click(function(){
                  cgmap.geocoding('geoshapemap',
                  'Edit',
                  cgmap.portal_url + '/geocoderview')});
+               $('.geocoder-wrapper input[name=geocoding-address]').keydown(
+                 function(evt){
+                   if (evt.keyCode == 13) { 
+                     evt.preventDefault();
+                     $(this).siblings('input[value=Search]').click();
+                   }
+                 }
+               );
            });
+         })(jQuery);
          </script>
-         <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
 
     <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
     <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />

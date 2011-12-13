@@ -4,6 +4,12 @@ Changelog
 0.1dev (unreleased)
 -------------------
 
+- Added ability to hit enter key within geocoder input and search. Previously,
+  hitting enter submitted the parent form.
+  [davidjb]
+- Restructure geocoder JavaScript so it happens on window.load (and wrap
+  the usage of ``$``).
+  [davidjb]
 - Execute map construction on window.load rather than when the JavaScript
   gets loaded.
   [davidjb]
