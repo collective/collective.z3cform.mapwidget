@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '0.1dev'
 
 setup(name='collective.z3cform.mapwidget',
       version=version,
@@ -14,10 +14,10 @@ setup(name='collective.z3cform.mapwidget',
         "Framework :: Plone",
         "Programming Language :: Python",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='z3c.form form widget collective.geo map OpenLayers',
+      author='collective.geo Project',
+      author_email='collectivegeo-discussion@lists.coactivate.org',
+      url='http://www.coactivate.org/projects/collectivegeo/project-home',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective', 'collective.z3cform'],
