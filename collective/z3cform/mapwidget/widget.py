@@ -11,8 +11,10 @@ import z3c.form.widget
 from z3c.form.interfaces import DISPLAY_MODE
 from collective.geo.mapwidget.interfaces import IMaps, IMapView
 
+
 class IMapWidget(z3c.form.interfaces.ITextAreaWidget, IMapView):
     pass
+
 
 class MapWidget(z3c.form.browser.textarea.TextAreaWidget):
     zope.interface.implementsOnly(IMapWidget)
@@ -45,6 +47,7 @@ class MapWidget(z3c.form.browser.textarea.TextAreaWidget):
 
         return getMultiAdapter((self, self.request,
                                     self.context), IMaps)[0]
+
 
 @zope.component.adapter(zope.schema.interfaces.IField,
                         z3c.form.interfaces.IFormLayer)

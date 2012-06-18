@@ -8,6 +8,7 @@ class MapWidgets(BaseMapWidgets):
     mapid = 'default-cgmap'
     klass = 'widget-cgmap'
 
+
 class ShapeMapDisplayWidget(MapWidget):
 
     klass = 'widget-cgmap'
@@ -32,6 +33,7 @@ class ShapeMapDisplayWidget(MapWidget):
     })(jQuery);
     """ % dict(mapid=self.mapid, layer_name=layer_name)
 
+
 class ShapeMapWidget(MapWidget):
 
     klass = 'widget-cgmap'
@@ -53,6 +55,7 @@ class ShapeMapWidget(MapWidget):
 
     })(jQuery);
     """ % dict(mapid=self.mapid, wktid=self.view.id)
+
 
 class ShapeDisplayLayer(MapLayer):
 

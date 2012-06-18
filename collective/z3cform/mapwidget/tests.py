@@ -12,6 +12,7 @@ ptc.setupPloneSite()
 
 import collective.z3cform.mapwidget
 
+
 class TestCase(ptc.PloneTestCase):
     class layer(PloneSite):
         @classmethod
