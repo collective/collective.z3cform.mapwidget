@@ -22,8 +22,7 @@ class ShapeMapDisplayWidget(MapWidget):
         return """
     (function($) {
 
-    $(window).bind("load", function() {
-       var map = cgmap.config['%(mapid)s'].map;
+    $(window).bind("map-load", function(e, map) {
        var layers = map.getLayersByName("%(layer_name)s");
        if (layers && layers[0].features) {
            map.zoomToExtent(layers[0].getDataExtent());
@@ -45,8 +44,7 @@ class ShapeMapWidget(MapWidget):
         return """
     (function($) {
 
-    $(window).bind("load", function() {
-       var map = cgmap.config['%(mapid)s'].map;
+    $(window).bind("map-load", function(e, map) {
        var layer = map.getLayersByName('Edit')[0];
        var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%(wktid)s'});
        map.addControl(elctl);
