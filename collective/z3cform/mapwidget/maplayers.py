@@ -17,8 +17,8 @@ class ShapeMapDisplayWidget(MapWidget):
 
     @property
     def js(self):
-        layer_name = '%s - %s' % (self.context.Title(),
-                                  self.view.label)
+        layer_name = u'%s - %s' % (self.context.Title().decode('utf-8'),
+                                   unicode(self.view.label))
         return """
     (function($) {
 
@@ -61,8 +61,8 @@ class ShapeDisplayLayer(MapLayer):
 
     @property
     def jsfactory(self):
-        layer_name = '%s - %s' % (self.context.Title(),
-                                  self.widget.view.label)
+        layer_name = u'%s - %s' % (self.context.Title().decode('utf-8'),
+                                   unicode(self.widget.view.label))
         js = """
     function() { return (function(cgmap) {
         cg_default_options = cgmap.createDefaultOptions();

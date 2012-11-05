@@ -4,7 +4,9 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Decode context titles from utf-8 to avoid errors on displaying a map
+  with content containing such characters.
+  [davidjb]
 
 
 0.1 (2012-02-17)
