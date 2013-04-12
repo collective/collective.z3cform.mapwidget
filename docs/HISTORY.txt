@@ -4,6 +4,7 @@ Changelog
 0.2 (unreleased)
 ----------------
 
+- Moved ShapeMapWidget and ShapeEditLayer to c.geo.mapwidget [gborelli]
 - Decode context titles from utf-8 to avoid errors on displaying a map
   with content containing such characters.
   [davidjb]
@@ -12,8 +13,8 @@ Changelog
 0.1 (2012-02-17)
 ----------------
 
-- Added ability to hit enter key within geocoder input and search. Previously,
-  hitting enter submitted the parent form.
+- Added ability to hit enter key within geocoder input and search.
+  Previously, hitting enter submitted the parent form.
   [davidjb]
 - Restructure geocoder JavaScript so it happens on window.load (and wrap
   the usage of ``$``).
@@ -24,8 +25,8 @@ Changelog
 - Pass map id through to edit shape map JavaScript.
   [davidjb]
 - Remove dependency on jq object for edit shape map.
-  [davidjb] 
+  [davidjb]
 - Added ability to display a collective.geo map when outputting this widget
-  in display mode.  Presents a layer with the field's value as its features. 
+  in display mode.  Presents a layer with the field's value as its features.
   [davidjb]
 - Initial release

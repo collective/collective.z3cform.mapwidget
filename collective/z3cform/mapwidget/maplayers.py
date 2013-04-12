@@ -1,12 +1,5 @@
 from collective.geo.mapwidget.browser.widget import MapWidget
 from collective.geo.mapwidget.maplayers import MapLayer
-from collective.geo.mapwidget.browser.widget import MapWidgets \
-                                                as BaseMapWidgets
-
-
-class MapWidgets(BaseMapWidgets):
-    mapid = 'default-cgmap'
-    klass = 'widget-cgmap'
 
 
 class ShapeMapDisplayWidget(MapWidget):
@@ -30,29 +23,10 @@ class ShapeMapDisplayWidget(MapWidget):
     });
 
     })(jQuery);
-    """ % dict(mapid=self.mapid, layer_name=layer_name)
-
-
-class ShapeMapWidget(MapWidget):
-
-    klass = 'widget-cgmap'
-    mapid = 'geoshapemap'
-    _layers = ['shapeedit']
-
-    @property
-    def js(self):
-        return """
-    (function($) {
-
-    $(window).bind("map-load", function(e, map) {
-       var layer = map.getLayersByName('Edit')[0];
-       var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%(wktid)s'});
-       map.addControl(elctl);
-       elctl.activate();
-    });
-
-    })(jQuery);
-    """ % dict(mapid=self.mapid, wktid=self.view.id)
+    """ % {
+            'mapid': self.mapid,
+            'layer_name': layer_name
+        }
 
 
 class ShapeDisplayLayer(MapLayer):
@@ -82,16 +56,8 @@ class ShapeDisplayLayer(MapLayer):
         return layer;
     })(cgmap);
     }
-             """ % dict(coords=self.widget.view.value,
-                        layer_name=layer_name
-                       )
+             """ % {
+            'coords': self.widget.view.value,
+            'layer_name': layer_name
+        }
         return js
-
-
-class ShapeEditLayer(MapLayer):
-
-    name = 'shapeedit'
-
-    jsfactory = """
-    function(){return new OpenLayers.Layer.Vector('Edit');}
-    """

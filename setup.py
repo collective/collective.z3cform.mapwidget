@@ -6,14 +6,16 @@ version = '0.2dev'
 setup(name='collective.z3cform.mapwidget',
       version=version,
       description="z3c.form map widget",
-      long_description=open("README.rst").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=(
+          open("README.rst").read() + "\n" +
+          open(os.path.join("docs", "HISTORY.txt")).read()
+      ),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+      ],
       keywords='z3c.form form widget collective.geo map OpenLayers',
       author='collective.geo Project',
       author_email='collectivegeo-discussion@lists.coactivate.org',

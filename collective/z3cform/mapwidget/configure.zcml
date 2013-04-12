@@ -4,7 +4,6 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="collective.z3cform.mapwidget">
 
-  <five:registerPackage package="." initialize=".initialize" />
 
   <class class=".widget.MapWidget">
     <require
@@ -28,25 +27,20 @@
     />
 
   <adapter
-    for=".widget.IMapWidget
+      for=".widget.IMapWidget
          zope.interface.Interface
          zope.interface.Interface"
-    factory=".maplayers.MapWidgets"
-    />
+      factory="collective.geo.mapwidget.browser.shapewidget.ShapeMapWidget"
+      name="geoshapemap" />
 
   <adapter
-    for=".widget.IMapWidget
-         zope.interface.Interface
-         zope.interface.Interface"
-    factory=".maplayers.ShapeMapDisplayWidget"
-    name="geoshapedisplaymap" />
-
-  <adapter
-    for=".widget.IMapWidget
-         zope.interface.Interface
-         zope.interface.Interface"
-    factory=".maplayers.ShapeMapWidget"
-    name="geoshapemap" />
+      for=".widget.IMapWidget
+           zope.interface.Interface
+           zope.interface.Interface
+           collective.geo.mapwidget.interfaces.IMapWidget"
+      factory="collective.geo.mapwidget.browser.shapewidget.ShapeEditLayer"
+      name="shapeedit"
+      />
 
   <adapter
       for=".widget.IMapWidget
@@ -58,29 +52,11 @@
       />
 
   <adapter
-      for=".widget.IMapWidget
-           zope.interface.Interface
-           zope.interface.Interface
-           collective.geo.mapwidget.interfaces.IMapWidget"
-      factory=".maplayers.ShapeEditLayer"
-      name="shapeedit"
-      />
-
-  <!-- <adapter
-      for=".widget.IMapWidget
-           zope.interface.Interface
-           zope.interface.Interface
-           zope.interface.Interface"
-      factory=".maplayers.MapWidget"
-      name="z3cform-map-widget"
-  /> -->
-
-  <!-- <adapter
     for=".widget.IMapWidget
          zope.interface.Interface
-         zope.interface.Interface
          zope.interface.Interface"
-    factory=".maplayers.ShapeMapWidget"
-    /> -->
+    factory=".maplayers.ShapeMapDisplayWidget"
+    name="geoshapedisplaymap" />
 
+  <!-- include package=".demo" /-->
 </configure>
