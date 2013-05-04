@@ -4,6 +4,12 @@ Changelog
 0.2 (unreleased)
 ----------------
 
+- Refactored widget, renamed IMapWidget to IFormMapWidget and added
+  MapDisplayWidget for IFormMapWidget display mode
+  [gborelli]
+
+- Moved shapedisplay layer to c.geo.mapwidgegt
+  [gborelli]
 - Moved ShapeMapWidget and ShapeEditLayer to c.geo.mapwidget [gborelli]
 - Decode context titles from utf-8 to avoid errors on displaying a map
   with content containing such characters.

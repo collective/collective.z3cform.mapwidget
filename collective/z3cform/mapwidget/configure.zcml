@@ -4,59 +4,37 @@
     xmlns:z3c="http://namespaces.zope.org/z3c"
     i18n_domain="collective.z3cform.mapwidget">
 
-
-  <class class=".widget.MapWidget">
+  <class class=".widget.FormMapWidget">
     <require
         permission="zope.Public"
-        interface=".widget.IMapWidget"
+        interface=".widget.IFormMapWidget"
       />
   </class>
 
   <z3c:widgetTemplate
     mode="input"
-    widget=".widget.IMapWidget"
+    widget=".widget.IFormMapWidget"
     layer="z3c.form.interfaces.IFormLayer"
     template="map_input.pt"
     />
 
   <z3c:widgetTemplate
     mode="display"
-    widget=".widget.IMapWidget"
+    widget=".widget.IFormMapWidget"
     layer="z3c.form.interfaces.IFormLayer"
     template="map_display.pt"
     />
 
+  <!-- Register ShapeDisplayLayer only for IFormMapWidget -->
   <adapter
-      for=".widget.IMapWidget
-         zope.interface.Interface
-         zope.interface.Interface"
-      factory="collective.geo.mapwidget.browser.shapewidget.ShapeMapWidget"
-      name="geoshapemap" />
-
-  <adapter
-      for=".widget.IMapWidget
+      for=".widget.IFormMapWidget
            zope.interface.Interface
            zope.interface.Interface
            collective.geo.mapwidget.interfaces.IMapWidget"
-      factory="collective.geo.mapwidget.browser.shapewidget.ShapeEditLayer"
-      name="shapeedit"
-      />
-
-  <adapter
-      for=".widget.IMapWidget
-           zope.interface.Interface
-           zope.interface.Interface
-           collective.geo.mapwidget.interfaces.IMapWidget"
-      factory=".maplayers.ShapeDisplayLayer"
+      provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+      factory="collective.geo.mapwidget.maplayers.ShapeDisplayLayer"
       name="shapedisplay"
-      />
+  />
 
-  <adapter
-    for=".widget.IMapWidget
-         zope.interface.Interface
-         zope.interface.Interface"
-    factory=".maplayers.ShapeMapDisplayWidget"
-    name="geoshapedisplaymap" />
-
-  <!-- include package=".demo" /-->
+<include package=".demo" />
 </configure>

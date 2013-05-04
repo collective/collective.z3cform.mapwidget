@@ -4,38 +4,23 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       i18n:domain="collective.z3cform.mapwidget"
       tal:omit-tag="">
-  <div>
-     <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
-     <script type="text/javascript">
-     (function($) {
-       $(window).bind("load", function() {
-           $('#cgeo-get-location').click(function(){
-             cgmap.geocoding('geoshapemap',
-             'Edit',
-             cgmap.portal_url + '/geocoderview')});
-           $('.geocoder-wrapper input[name=geocoding-address]').keydown(
-             function(evt){
-               if (evt.keyCode == 13) {
-                 evt.preventDefault();
-                 $(this).siblings('input[value=Search]').click();
-               }
-             }
-           );
-       });
-     })(jQuery);
-     </script>
+  <div class="map-widget"
+    tal:define="cgmap view/cgmap;
+                mapid cgmap/mapid">
 
-    <metal:use use-macro="context/@@collectivegeo-macros/openlayers"/>
+    <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+    <metal:use use-macro="context/@@collectivegeo-macros/geocoding"/>
     <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
 
     <div class="row horizontal">
       <dl class="collapsible collapsedOnLoad">
-        <dt class="collapsibleHeader" i18n:translate="" i18n:domain="collective.geo.contentlocations">Manual coordinates</dt>
+        <dt class="collapsibleHeader"
+          i18n:translate="">Manual coordinates</dt>
         <dd class="collapsibleContent">
       <textarea
          id="" name="" class="" cols="" rows=""
          tabindex="" disabled="" readonly="" accesskey=""
-         tal:attributes="id view/id;
+         tal:attributes="id string:${view/id}-wkt;
                          name view/name;
                          class view/klass;
                          style view/style;

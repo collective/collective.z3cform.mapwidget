@@ -1,3 +1,4 @@
+
 <div id="" class=""
       tal:attributes="id view/id;
                       class view/klass;
@@ -15,9 +16,8 @@
                       onkeydown view/onkeydown;
                       onkeyup view/onkeyup"
     tal:content="view/value">
-    <!--div tal:define="cgmap view/mapwidgets"
-         tal:attributes="id view/id;">
-       <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
-       <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
-    </div -->
+</div>
+<div tal:define="cgmap view/cgmap">
+  <metal:use use-macro="context/@@collectivegeo-macros/openlayers"/>
+  <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
 </div>

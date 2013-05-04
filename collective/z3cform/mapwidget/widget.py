@@ -1,43 +1,52 @@
-# import Acquisition
-import zope.interface
-import zope.schema.interfaces
-from zope.component import getMultiAdapter
-
-# from zope.app.component.hooks import getSite
+from zope.component import adapter
+from zope.interface import implementer
+from zope.interface import implementsOnly
+from zope.schema.interfaces import IField
 
 import z3c.form.interfaces
-import z3c.form.browser.textarea
-import z3c.form.widget
+from z3c.form.interfaces import IFormLayer
+from z3c.form.interfaces import IFieldWidget
+from z3c.form.interfaces import ITextAreaWidget
+
+from z3c.form.browser.textarea import TextAreaWidget
+from z3c.form.widget import FieldWidget
 from z3c.form.interfaces import DISPLAY_MODE
-from collective.geo.mapwidget.interfaces import IMaps, IMapView
+
+from collective.geo.mapwidget.browser import widget
 
 
-class IMapWidget(z3c.form.interfaces.ITextAreaWidget, IMapView):
+class MapWidget(widget.MapWidget):
+    js = None
+
+    @property
+    def mapid(self):
+        return "%s-map" % self.view.name.replace('.', '-')
+
+    def coords(self):
+        return self.view.value
+
+
+class MapDisplayWidget(MapWidget):
+    _layers = ['shapedisplay']
+
+
+class IFormMapWidget(ITextAreaWidget):
+    """Interface for z3c.form map widget"""
     pass
 
 
-class MapWidget(z3c.form.browser.textarea.TextAreaWidget):
-    zope.interface.implementsOnly(IMapWidget)
-
-    klass = u'map-widget'
-    mapfields = ['geoshapemap']
+class FormMapWidget(TextAreaWidget):
+    implementsOnly(IFormMapWidget)
 
     @property
-    def map_id(self):
-        return "%s-map" % self.name.replace('.', '-')
-
-    # def cgmap(self):
-    #     mapwidget = getMultiAdapter(
-    #         (self, self.request, self.context),
-    #         IMaps
-    #     )[0]
-    #     mapwidget.mapid = self.map_id
-    #     return mapwidget
+    def cgmap(self):
+        if self.mode == DISPLAY_MODE:
+            return MapDisplayWidget(self, self.request, self.context)
+        return MapWidget(self, self.request, self.context)
 
 
-@zope.component.adapter(zope.schema.interfaces.IField,
-                        z3c.form.interfaces.IFormLayer)
-@zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
+@adapter(IField, IFormLayer)
+@implementer(IFieldWidget)
 def MapFieldWidget(field, request):
-    """IFieldWidget factory for MapWidget."""
-    return z3c.form.widget.FieldWidget(field, MapWidget(request))
+    """IFieldWidget factory for FormMapWidget."""
+    return FieldWidget(field, FormMapWidget(request))
