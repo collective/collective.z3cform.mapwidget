@@ -17,6 +17,12 @@
         <dt class="collapsibleHeader"
           i18n:translate="">Manual coordinates</dt>
         <dd class="collapsibleContent">
+        <div>
+          <span class="formHelp"
+            i18n:translate="wkt_help">
+            In the input below you can insert the coordinates in WKT format. See <a href="http://en.wikipedia.org/wiki/Well-known_text#Geometric_objects">WKT page on wikipedia</a> for more information.
+           </span>
+        </div>
       <textarea
          id="" name="" class="" cols="" rows=""
          tabindex="" disabled="" readonly="" accesskey=""
