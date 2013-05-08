@@ -24,5 +24,5 @@ msgstr "Inserisci le coordinate manualmente"
 #. Default: "In the input below you can insert the coordinates in WKT format. See <a href=\"http://en.wikipedia.org/wiki/Well-known_text#Geometric_objects\">WKT page on wikipedia</a> for more information."
 #: ../map_input.pt:21
 msgid "wkt_help"
-msgstr "Nel campo qui sotto puoi inserire le coordinate in formato WKT. Vedi la <a href=\"http://en.wikipedia.org/wiki/Well-known_text#Geometric_objects\">pagina di wikipedia relativa a WKT</a> per avere maggiori in formazioni."
+msgstr "Nel campo qui sotto puoi inserire le coordinate in formato WKT. Vedi la <a href=\"http://it.wikipedia.org/wiki/Well-Known_Text#Oggetti_geometrici\">pagina di wikipedia relativa a WKT</a> per avere maggiori in formazioni."
 
