@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0b3.dev0'
+version = '2.0b2'
 
 setup(name='collective.z3cform.mapwidget',
       version=version,
