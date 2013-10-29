@@ -1,23 +1,11 @@
 Changelog
 =========
 
-2.0b3 (unreleased)
-------------------
+2.0 (unreleased)
+----------------
 
-- Nothing changed yet.
-
-
-2.0b2 (2013-06-02)
-------------------
-
-- Nothing changed yet.
-
-
-2.0b2 (2013-06-02)
-------------------
-
-- Nothing changed yet.
-
+- Changed package layout and add buildout conf
+  [gborelli]
 
 2.0b1 (2013-06-02)
 ------------------

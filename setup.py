@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.0b3.dev0'
+version = '2.0.dev0'
 
 setup(name='collective.z3cform.mapwidget',
       version=version,
@@ -21,7 +21,8 @@ setup(name='collective.z3cform.mapwidget',
       author_email='collectivegeo-discussion@lists.coactivate.org',
       url='http://www.coactivate.org/projects/collectivegeo/project-home',
       license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
+      packages=find_packages('src'),
+      package_dir={'': 'src'},
       namespace_packages=['collective', 'collective.z3cform'],
       include_package_data=True,
       zip_safe=False,
