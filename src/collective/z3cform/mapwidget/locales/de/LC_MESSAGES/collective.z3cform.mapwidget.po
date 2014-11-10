@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"POT-Creation-Date: 2014-11-10 15:04+0000\n"
+"PO-Revision-Date: 2013-09-11 15:30+0800\n"
+"Last-Translator: Marc Sommerhalder <marc.sommerhalder@seantis.ch>\n"
+"Language-Team: <marc.sommerhalder@seantis.ch>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.z3cform.mapwidget\n"
+"X-Is-Fallback-For: de-at de-ch de-li de-lu\n"
+
+#: ../map_input.pt:17
+msgid "Manual coordinates"
+msgstr "Manuelle Koordinaten"
+
+#. Default: "In the input below you can insert the coordinates in WKT format. See <a href=\"http://en.wikipedia.org/wiki/Well-known_text#Geometric_objects\">WKT page on wikipedia</a> for more information."
+#: ../map_input.pt:21
+msgid "wkt_help"
+msgstr "Im Eingabefeld unten können Koordinaten im WKT-Format eingeben werden. Siehe <a href=\"http://de.wikipedia.org/wiki/Simple_Feature_Access#Well-known_Text\">die entsprechende Seite auf Wikipedia</a> für weitere Informationen."
