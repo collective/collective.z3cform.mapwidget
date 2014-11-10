@@ -1,0 +1,55 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.z3cform.mapwidget">
+
+  <i18n:registerTranslations directory="locales" />
+  <includeDependencies package="." />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Collective z3cform MApwidget"
+      directory="profiles/default"
+      description="z3cform mapwidget for c.geo"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+
+  <class class=".widget.FormMapWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.IFormMapWidget"
+      />
+  </class>
+
+  <z3c:widgetTemplate
+    mode="input"
+    widget=".widget.IFormMapWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="map_input.pt"
+    />
+
+  <z3c:widgetTemplate
+    mode="display"
+    widget=".widget.IFormMapWidget"
+    layer="z3c.form.interfaces.IFormLayer"
+    template="map_display.pt"
+    />
+
+  <!-- Register ShapeDisplayLayer only for IFormMapWidget -->
+  <adapter
+      for=".widget.IFormMapWidget
+           zope.interface.Interface
+           zope.interface.Interface
+           collective.geo.mapwidget.interfaces.IMapWidget"
+      provides = "collective.geo.mapwidget.interfaces.IMapLayer"
+      factory="collective.geo.mapwidget.maplayers.ShapeDisplayLayer"
+      name="shapedisplay"
+  />
+
+
+  <!-- <include package=".demo" /> -->
+
+</configure>

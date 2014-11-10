@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.z3cform.mapwidget">
+
+    <browser:page
+        for="*"
+        name="mapwidget_demo"
+        class=".browser.DemoForm"
+        permission="zope.Public" />
+
+</configure>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>20</version>
+  <dependencies>
+    <dependency>profile-collective.geo.mapwidget:default</dependency>
+  </dependencies>
+</metadata>
+
