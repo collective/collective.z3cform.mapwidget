@@ -1,0 +1,17 @@
+plone:
+  build: .
+  ports:
+    - "8080:8080"
+  volumes:
+    - ".:/srv/webapp/src/collective.z3cform.mapwidget/"
+  entrypoint: "/srv/webapp/src/collective.z3cform.mapwidget/docker-entrypoint.sh"
+  command: run
+  volumes_from:
+    - plonedata
+
+# See:
+# http://container42.com/2014/11/18/data-only-container-madness/
+plonedata:
+  build: .
+  entrypoint: "/bin/echo"
+  command: "Plone data container"
