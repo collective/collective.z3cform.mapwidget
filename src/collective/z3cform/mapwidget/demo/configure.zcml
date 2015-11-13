@@ -5,7 +5,7 @@
 
     <browser:page
         for="*"
-        name="mapwidget_demo"
+        name="mapwidget-demo"
         class=".browser.DemoForm"
         permission="zope.Public" />
 

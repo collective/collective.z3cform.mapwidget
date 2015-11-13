@@ -4,7 +4,8 @@ Changelog
 2.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added WKT field to adapt MapWidgetField
+  [giorgio]
 
 
 2.1 (2015-05-02)

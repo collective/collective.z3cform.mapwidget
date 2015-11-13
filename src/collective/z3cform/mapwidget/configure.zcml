@@ -11,7 +11,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Collective z3cform MApwidget"
+      title="Collective z3cform Mapwidget"
       directory="profiles/default"
       description="z3cform mapwidget for c.geo"
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -37,6 +37,12 @@
     layer="z3c.form.interfaces.IFormLayer"
     template="map_display.pt"
     />
+
+  <adapter
+      factory=".widget.MapFieldWidget"
+      for=".field.IWKT
+           z3c.form.interfaces.IFormLayer"
+      />
 
   <!-- Register ShapeDisplayLayer only for IFormMapWidget -->
   <adapter

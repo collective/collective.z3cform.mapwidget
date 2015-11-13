@@ -3,7 +3,6 @@ from zope.interface import implementer
 from zope.interface import implementsOnly
 from zope.schema.interfaces import IField
 
-import z3c.form.interfaces
 from z3c.form.interfaces import IFormLayer
 from z3c.form.interfaces import IFieldWidget
 from z3c.form.interfaces import ITextAreaWidget
