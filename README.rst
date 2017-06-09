@@ -3,14 +3,14 @@ Introduction
 
 Map widget for z3c.form based on collective.geo.mapwidget.
 
-For more information about `collective.geo`, see the `Coactivative home page
+For more information about `collective.geo`, see the `Coactivate home page
 <http://www.coactivate.org/projects/collectivegeo/>`_.
 
 Installation
 ============
 
-This addon can be installed has any other addons, please follow official
-documentation_.
+This addon can be installed in the same manner as other addons; please follow
+the official `Plone documentation`_.
 
 Usage
 =====
@@ -20,4 +20,4 @@ In order to use the widget contained in this package, use
 the widget for a suitable field within your form schema. One such suitable
 field type is that of ``zope.schema.TextLine``.
 
-.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+.. _Plone documentation: https://docs.plone.org/manage/installing/installing_addons.html
