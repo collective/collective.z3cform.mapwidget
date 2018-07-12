@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2 (unreleased)
+2.2 (2018-07-12)
 ----------------
 
 - Added WKT field to adapt MapWidgetField
